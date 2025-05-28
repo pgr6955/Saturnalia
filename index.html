@@ -1,323 +1,83 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Sticky Scroll Experience</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #111;
-            overflow-x: hidden;
-            font-family: sans-serif;
-        }
-        .image-container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            scroll-snap-align: start;
-        }
-        .image-container img {
-            max-width: 80vw;
-            max-height: 80vh;
-            object-fit: contain;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.7);
-            border-radius: 12px;
-            transition: transform 0.5s ease-out;
-        }
-        .scroll-wrapper {
-            scroll-snap-type: y mandatory;
-            overflow-y: scroll;
-            height: 100vh;
-            scroll-behavior: smooth;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sticky Scroll</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+    .image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 50px;
+      min-height: 100vh;
+      transition: transform 0.3s;
+    }
+    img {
+      max-width: 80%;
+      height: auto;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      transform: rotate(var(--rotation));
+    }
+    .toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 10;
+    }
+    :root {
+      --bg: #ffffff;
+      --text: #000000;
+    }
+    .dark {
+      --bg: #111;
+      --text: #f1f1f1;
+    }
+  </style>
 </head>
 <body>
-<div class="scroll-wrapper">
+  <button class="toggle" onclick="document.body.classList.toggle('dark')">🌓</button>
 
-    <div class="image-container" style="transform: translate(27px, 29px);">
-        <img src="/mnt/data/7DE09C21-54D9-4599-B9CC-F23B72E35BE8.jpeg" alt="Sticky Note 1">
-    </div>
-    
-    <div class="image-container" style="transform: translate(12px, 27px);">
-        <img src="/mnt/data/3A93E5AE-3110-4FD2-821E-65A6869C1308.jpeg" alt="Sticky Note 2">
-    </div>
-    
-    <div class="image-container" style="transform: translate(32px, -29px);">
-        <img src="/mnt/data/0A781C1A-6509-42C6-94E9-8D38C8A5C2D4.jpeg" alt="Sticky Note 3">
-    </div>
-    
-    <div class="image-container" style="transform: translate(1px, -11px);">
-        <img src="/mnt/data/B1000D87-7E58-4631-8DF3-6B1109AF981B.jpeg" alt="Sticky Note 4">
-    </div>
-    
-    <div class="image-container" style="transform: translate(9px, 3px);">
-        <img src="/mnt/data/44D064D5-19F7-44FA-8BE8-02298BA7ACF9.jpeg" alt="Sticky Note 5">
-    </div>
-    
-    <div class="image-container" style="transform: translate(4px, -11px);">
-        <img src="/mnt/data/3D7549A7-AA60-4862-8853-2B511C96E585.jpeg" alt="Sticky Note 6">
-    </div>
-    
-    <div class="image-container" style="transform: translate(8px, 7px);">
-        <img src="/mnt/data/B9001BDC-6B52-42E9-8A81-E0FC275F8206.jpeg" alt="Sticky Note 7">
-    </div>
-    
-    <div class="image-container" style="transform: translate(37px, 26px);">
-        <img src="/mnt/data/39D57668-69F9-4F13-847E-4B2340F0E53F.jpeg" alt="Sticky Note 8">
-    </div>
-    
-    <div class="image-container" style="transform: translate(3px, -1px);">
-        <img src="/mnt/data/4D5B59C3-7956-49B5-B699-2AFD5A1FFBA0.jpeg" alt="Sticky Note 9">
-    </div>
-    
-    <div class="image-container" style="transform: translate(-19px, 22px);">
-        <img src="/mnt/data/1E200D6A-9E67-43C5-BD8C-995DB413FDEC.jpeg" alt="Sticky Note 10">
-    </div>
-    
-    <div class="image-container" style="transform: translate(-18px, -15px);">
-        <img src="/mnt/data/6A5A8F7B-BF18-43D9-B52B-C7E465918C5F.jpeg" alt="Sticky Note 11">
-    </div>
-    
-    <div class="image-container" style="transform: translate(10px, 21px);">
-        <img src="/mnt/data/3DF0F61B-A5D3-41A3-B2F9-192B147C4631.jpeg" alt="Sticky Note 12">
-    </div>
-    
-    <div class="image-container" style="transform: translate(27px, 20px);">
-        <img src="/mnt/data/5A07A04A-7B70-4145-99DC-CBFB60CFABA4.jpeg" alt="Sticky Note 13">
-    </div>
-    
-    <div class="image-container" style="transform: translate(37px, 24px);">
-        <img src="/mnt/data/D0C1D294-B588-4789-8BD4-EF5A2B9B9584.jpeg" alt="Sticky Note 14">
-    </div>
-    
-    <div class="image-container" style="transform: translate(17px, -14px);">
-        <img src="/mnt/data/6224F140-DE89-4D24-A943-2A3400FB7F5A.jpeg" alt="Sticky Note 15">
-    </div>
-    
-    <div class="image-container" style="transform: translate(26px, 14px);">
-        <img src="/mnt/data/B714DA39-D7C6-4BAF-BA32-0768D6A25B9E.jpeg" alt="Sticky Note 16">
-    </div>
-    
-    <div class="image-container" style="transform: translate(37px, 21px);">
-        <img src="/mnt/data/A67C2479-64AF-4B33-88EB-C3A7ABC7DE9F.jpeg" alt="Sticky Note 17">
-    </div>
-    
-    <div class="image-container" style="transform: translate(19px, 13px);">
-        <img src="/mnt/data/FAA2AABF-A37D-42A2-9353-2D3A4927F980.jpeg" alt="Sticky Note 18">
-    </div>
-    
-    <div class="image-container" style="transform: translate(23px, -16px);">
-        <img src="/mnt/data/3A95415F-B519-46F3-948A-CB9C89B5086D.jpeg" alt="Sticky Note 19">
-    </div>
-    
-    <div class="image-container" style="transform: translate(16px, -30px);">
-        <img src="/mnt/data/92E0D3DF-58DA-47E9-89C7-FC9D840369F1.jpeg" alt="Sticky Note 20">
-    </div>
-    
-    <div class="image-container" style="transform: translate(40px, 25px);">
-        <img src="/mnt/data/809BC82D-AAB0-4DCF-B5CE-5066D1DE34F0.jpeg" alt="Sticky Note 21">
-    </div>
-    
-    <div class="image-container" style="transform: translate(-38px, 8px);">
-        <img src="/mnt/data/0509D079-6E72-4596-B7C7-62D70E532287.jpeg" alt="Sticky Note 22">
-    </div>
-    
-    <div class="image-container" style="transform: translate(-39px, 28px);">
-        <img src="/mnt/data/967372C9-3DB2-457C-AE52-7251F7BBEA50.jpeg" alt="Sticky Note 23">
-    </div>
-    
-    <div class="image-container" style="transform: translate(-23px, 6px);">
-        <img src="/mnt/data/0C1923D3-F7B1-4C61-A1CB-2B3C280A6B6D.jpeg" alt="Sticky Note 24">
-    </div>
-    
-    <div class="image-container" style="transform: translate(17px, 24px);">
-        <img src="/mnt/data/8F811E22-0110-40A0-9CB0-9C3FEEB6BB40.jpeg" alt="Sticky Note 25">
-    </div>
-    
-    <div class="image-container" style="transform: translate(-40px, 28px);">
-        <img src="/mnt/data/1FB5A423-2122-4376-A2B0-F429E66FF33A.jpeg" alt="Sticky Note 26">
-    </div>
-    
-    <div class="image-container" style="transform: translate(18px, 21px);">
-        <img src="/mnt/data/0C9BC40D-FEE5-40E3-B78A-AADFC72D57B2.jpeg" alt="Sticky Note 27">
-    </div>
-    
-    <div class="image-container" style="transform: translate(12px, 8px);">
-        <img src="/mnt/data/A59B90C2-D72C-4B45-9FFE-99A4C5B047BD.jpeg" alt="Sticky Note 28">
-    </div>
-    
-    <div class="image-container" style="transform: translate(-25px, 26px);">
-        <img src="/mnt/data/DD51044D-C3EF-44E4-8E36-E04B5E7B5296.jpeg" alt="Sticky Note 29">
-    </div>
-    
-    <div class="image-container" style="transform: translate(10px, 30px);">
-        <img src="/mnt/data/26AAE7EE-670C-42E8-8A68-C945C3D76504.jpeg" alt="Sticky Note 30">
-    </div>
-    
-    <div class="image-container" style="transform: translate(7px, 28px);">
-        <img src="/mnt/data/EE9AF712-1C76-4815-A6D9-6D36997E8066.jpeg" alt="Sticky Note 31">
-    </div>
-    
-    <div class="image-container" style="transform: translate(-12px, 27px);">
-        <img src="/mnt/data/629E39D1-4AC7-49D4-B61C-4854F34F2627.jpeg" alt="Sticky Note 32">
-    </div>
-    
-    <div class="image-container" style="transform: translate(10px, 0px);">
-        <img src="/mnt/data/2D28FF88-1783-4888-B465-9DA3DA4A38E9.jpeg" alt="Sticky Note 33">
-    </div>
-    
-    <div class="image-container" style="transform: translate(-39px, -3px);">
-        <img src="/mnt/data/720460F2-1483-4039-B270-D2AB625F3E86.jpeg" alt="Sticky Note 34">
-    </div>
-    
-    <div class="image-container" style="transform: translate(5px, 26px);">
-        <img src="/mnt/data/953EE424-F689-4864-9AF1-0ECDF193997E.jpeg" alt="Sticky Note 35">
-    </div>
-    
-    <div class="image-container" style="transform: translate(-35px, -19px);">
-        <img src="/mnt/data/5D8A4EEA-3912-4287-8346-01F6B620DE86.jpeg" alt="Sticky Note 36">
-    </div>
-    
-    <div class="image-container" style="transform: translate(25px, 10px);">
-        <img src="/mnt/data/F1DA74D0-8046-4EAC-81BF-FF28B586DFE0.jpeg" alt="Sticky Note 37">
-    </div>
-    
-    <div class="image-container" style="transform: translate(40px, -6px);">
-        <img src="/mnt/data/A_photograph_showcases_thirty-one_square-shaped_Po.png" alt="Sticky Note 38">
-    </div>
-    
-    <div class="image-container" style="transform: translate(-26px, 29px);">
-        <img src="/mnt/data/82E07E25-A90E-44C1-B944-5EB60ACC145A.jpeg" alt="Sticky Note 39">
-    </div>
-    
-    <div class="image-container" style="transform: translate(-5px, -13px);">
-        <img src="/mnt/data/1B264F36-07C3-4457-9429-8CDE438BBB59.jpeg" alt="Sticky Note 40">
-    </div>
-    
-    <div class="image-container" style="transform: translate(-1px, -20px);">
-        <img src="/mnt/data/D0E01CC2-3621-40B4-A6D4-1E6322EEC5DE.jpeg" alt="Sticky Note 41">
-    </div>
-    
-    <div class="image-container" style="transform: translate(-22px, 14px);">
-        <img src="/mnt/data/DC331D59-A532-4DA6-B7CA-CEC78EBA0AC6.jpeg" alt="Sticky Note 42">
-    </div>
-    
-    <div class="image-container" style="transform: translate(-5px, -26px);">
-        <img src="/mnt/data/DA5B5DC3-D1D7-47B3-8A5E-ABE4725864E5.jpeg" alt="Sticky Note 43">
-    </div>
-    
-    <div class="image-container" style="transform: translate(37px, -24px);">
-        <img src="/mnt/data/1110751F-A462-4BBA-ABA0-4EDDC39B815C.jpeg" alt="Sticky Note 44">
-    </div>
-    
-    <div class="image-container" style="transform: translate(4px, 24px);">
-        <img src="/mnt/data/D4A4F5D0-085F-4845-B788-9E68F75ABB21.jpeg" alt="Sticky Note 45">
-    </div>
-    
-    <div class="image-container" style="transform: translate(6px, -26px);">
-        <img src="/mnt/data/D8C7EAD2-8FFD-4842-A8DF-9C9ABE4C8C7F.jpeg" alt="Sticky Note 46">
-    </div>
-    
-    <div class="image-container" style="transform: translate(-26px, -15px);">
-        <img src="/mnt/data/294537D6-FCC5-474D-B5BA-7015D6F4C081.jpeg" alt="Sticky Note 47">
-    </div>
-    
-    <div class="image-container" style="transform: translate(19px, -21px);">
-        <img src="/mnt/data/FC3828CE-3855-45FD-86F7-636534E76661.jpeg" alt="Sticky Note 48">
-    </div>
-    
-    <div class="image-container" style="transform: translate(27px, -4px);">
-        <img src="/mnt/data/771CD81C-E900-4A0B-A5E2-45DB1C898847.jpeg" alt="Sticky Note 49">
-    </div>
-    
-    <div class="image-container" style="transform: translate(15px, 10px);">
-        <img src="/mnt/data/8714619E-B080-4305-AC4B-FEEB5DAED0F5.jpeg" alt="Sticky Note 50">
-    </div>
-    
-    <div class="image-container" style="transform: translate(12px, -4px);">
-        <img src="/mnt/data/C119D088-B1D8-440C-BFD3-98A54AFDF875.jpeg" alt="Sticky Note 51">
-    </div>
-    
-    <div class="image-container" style="transform: translate(15px, 19px);">
-        <img src="/mnt/data/AE9D318A-68D1-4BC3-8AE8-65664CC46D9E.jpeg" alt="Sticky Note 52">
-    </div>
-    
-    <div class="image-container" style="transform: translate(17px, -1px);">
-        <img src="/mnt/data/537408C5-CAC7-4367-A881-E091D5ED9EEE.jpeg" alt="Sticky Note 53">
-    </div>
-    
-    <div class="image-container" style="transform: translate(-12px, 21px);">
-        <img src="/mnt/data/AD1D5F8F-8887-472F-957B-88C5B17DB096.jpeg" alt="Sticky Note 54">
-    </div>
-    
-    <div class="image-container" style="transform: translate(10px, 20px);">
-        <img src="/mnt/data/2F1B1265-92FA-453D-AF8A-B6DB8CC83EE7.jpeg" alt="Sticky Note 55">
-    </div>
-    
-    <div class="image-container" style="transform: translate(35px, 11px);">
-        <img src="/mnt/data/D9090C92-6A1C-499F-A9C8-692EBD14FA02.jpeg" alt="Sticky Note 56">
-    </div>
-    
-    <div class="image-container" style="transform: translate(-28px, -18px);">
-        <img src="/mnt/data/50E74788-02DA-40E7-BC31-3BBE90E3CEF8.jpeg" alt="Sticky Note 57">
-    </div>
-    
-    <div class="image-container" style="transform: translate(29px, -26px);">
-        <img src="/mnt/data/8DA2B5D0-0551-4020-A248-8CCBE2F8C392.jpeg" alt="Sticky Note 58">
-    </div>
-    
-    <div class="image-container" style="transform: translate(-20px, -7px);">
-        <img src="/mnt/data/36F02543-B06C-4F2F-BA4A-E70267337745.jpeg" alt="Sticky Note 59">
-    </div>
-    
-</div>
+  <div id="scroll-container"></div>
 
-<script>
-function toggleMode() {
-    const body = document.body;
-    body.classList.toggle("light-mode");
-    localStorage.setItem("mode", body.classList.contains("light-mode") ? "light" : "dark");
-}
-window.onload = () => {
-    const savedMode = localStorage.getItem("mode");
-    if (savedMode === "light") {
-        document.body.classList.add("light-mode");
-    }
-};
-</script>
-<style>
-body.light-mode {
-    background-color: #f5f5f5;
-    color: #111;
-}
-body.light-mode .image-container {
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-.toggle-button {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 1000;
-    padding: 10px 20px;
-    background: #444;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: sans-serif;
-}
-body.light-mode .toggle-button {
-    background: #ddd;
-    color: #000;
-}
-</style>
-<button class="toggle-button" onclick="toggleMode()">Toggle Mode</button>
+  <script>
+    const images = [
+      "FC_20250527_0002.jpeg", "FC_20250527_0003.jpeg", "FC_20250527_0005.jpeg",
+      "FC_20250527_0006.jpeg", "FC_20250527_0007.jpeg", "FC_20250527_0008.jpeg",
+      "FC_20250527_0009.jpeg", "FC_20250527_0010.jpeg", "FC_20250527_0011.jpeg",
+      "FC_20250527_0012.jpeg", "FC_20250527_0014.jpeg", "FC_20250527_0015.jpeg",
+      "FC_20250527_0016.jpeg", "FC_20250527_0020.jpeg", "FC_20250527_0021.jpeg",
+      "FC_20250527_0025.jpeg", "IMG_5233.jpeg", "IMG_5238.jpeg", "IMG_5239.jpeg",
+      "IMG_5240.jpeg", "IMG_5241.jpeg", "IMG_5242.jpeg", "IMG_5243.jpeg",
+      "IMG_5245.jpeg", "IMG_5246.jpeg", "IMG_5247.jpeg", "IMG_5249.jpeg",
+      "IMG_5250.jpeg", "Snapseed.jpeg"
+    ];
 
+    // Shuffle image order
+    images.sort(() => 0.5 - Math.random());
+
+    const container = document.getElementById('scroll-container');
+
+    images.forEach((file, index) => {
+      const div = document.createElement('div');
+      div.className = 'image-container';
+      div.style.setProperty('--rotation', `${(Math.random() - 0.5) * 6}deg`);
+
+      const img = document.createElement('img');
+      img.src = `Images/${file}`;
+      img.alt = `Sticky ${index + 1}`;
+
+      div.appendChild(img);
+      container.appendChild(div);
+    });
+  </script>
 </body>
 </html>
